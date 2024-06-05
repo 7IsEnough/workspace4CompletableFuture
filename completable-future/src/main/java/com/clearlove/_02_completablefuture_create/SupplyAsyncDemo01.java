@@ -16,7 +16,10 @@ public class SupplyAsyncDemo01 {
     CommonUtils.printThreadLog("main start");
 
     CompletableFuture<String> newsFuture = CompletableFuture.supplyAsync(
-        () -> CommonUtils.readFile("news.txt"));
+        () -> {
+          CommonUtils.printThreadLog("task run");
+        return CommonUtils.readFile("news.txt");
+        });
 
     CommonUtils.printThreadLog("here are not blocked, main continue");
     String news = newsFuture.get();

@@ -53,13 +53,17 @@ public class CommonUtils {
   public static void printThreadLog(String message) {
     // 时间戳 | 线程id | 线程名 | 日志信息
     String result = new StringJoiner(" | ").add(
-            new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(System.currentTimeMillis()))
+            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis()))
         .add(String.format("%2d", Thread.currentThread().getId()))
         .add(Thread.currentThread().getName())
         .add(message)
         .toString();
     System.out.println(result);
 
+  }
+
+  private static String getCurrentTime() {
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis());
   }
 
 
